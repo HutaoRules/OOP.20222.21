@@ -277,7 +277,7 @@ public class DemonstrationController {
             SequentialTransition st = new SequentialTransition();
 
             for (int i = 0; i < qSort.count; i++) {
-                st.getChildren().add(qSort.trans[i]);
+                st.getChildren().add(qSort.trans[i]); 
             }
             st.play(); 
         }
@@ -352,7 +352,6 @@ public class DemonstrationController {
         }
         Rectangle rec;
         double recWidth = drawPane.getWidth() / size;
-        System.out.println(size);
 
         for (int i = 0; i < this.size; i++) {
             System.out.println(size);
@@ -365,12 +364,12 @@ public class DemonstrationController {
             rec.setStroke(Color.WHITE);
             rec.setVisible(true);
 
-            if (current > -1 && i == current) {
-                rec.setFill(Color.RED); // color of current traversing element
-            }
-            if (check > -1 && i == check) {
-                rec.setFill(Color.GREEN); // color of current checking element
-            }
+            // if (current > -1 && i == current) {
+            //     rec.setFill(Color.RED); // color of current traversing element
+            // }
+            // if (check > -1 && i == check) {
+            //     rec.setFill(Color.GREEN); // color of current checking element
+            // }
             double curRectPosX = i * recWidth;
             // fill rectangle element in graph
 

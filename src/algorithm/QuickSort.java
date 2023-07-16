@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 public class QuickSort extends Sort {
 
     private int size;
-    private Pane drawPane;
+    private Pane drawPane; 
     private Column[] cols;
 
     public QuickSort(Column[] cols, Pane drawPane) {
@@ -14,7 +14,7 @@ public class QuickSort extends Sort {
         this.size = cols.length;
         this.drawPane = drawPane;
         this.cols = cols;
-        this.recWidth = drawPane.getWidth() / this.size;
+        this.recWidth = drawPane.getWidth() / this.size; 
     }
 
     private int partition(Column[] cols, int low, int high) {
@@ -35,7 +35,7 @@ public class QuickSort extends Sort {
             int pi = partition(cols, low, high);
 
             quickSort(cols, low, pi - 1);
-            quickSort(cols, pi + 1, high);
+            quickSort(cols, pi + 1, high); 
         }
     }
 

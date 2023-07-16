@@ -1,9 +1,11 @@
 package algorithm;
 
 import data.Column;
+import javafx.animation.FillTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public abstract class Sort implements Sortable {
@@ -23,19 +25,17 @@ public abstract class Sort implements Sortable {
     public void swap(Column[] cols, int i1, int i2)
     {   
         ParallelTransition paTran = new ParallelTransition();
-       
-        TranslateTransition tran1 = new TranslateTransition(Duration.millis(200), cols[i1]);
+        
+
+        TranslateTransition tran1 = new TranslateTransition(Duration.millis(150), cols[i1]);
         tran1.setByX((i2-i1)*recWidth);
         
-        TranslateTransition tran2 = new TranslateTransition(Duration.millis(200), cols[i2]);
+        TranslateTransition tran2 = new TranslateTransition(Duration.millis(150), cols[i2]);
         tran2.setByX((i1-i2)*recWidth);
-        
-        
+
         Column temp = cols[i1];
         cols[i1] = cols[i2];
         cols[i2] = temp;
-
-
 
         paTran.getChildren().addAll(tran1, tran2);
 

@@ -1,12 +1,16 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Random;
-
+import javafx.scene.Node;
 import javafx.animation.SequentialTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import algorithm.BubbleSort;
 import algorithm.InsertionSort;
 import algorithm.QuickSort;
@@ -206,7 +211,7 @@ public class DemonstrationController {
         curInputArrayOption = inputOptionComboBox.getSelectionModel().getSelectedIndex();
         switch (curInputArrayOption) {
             case 0: // random
-                size = Integer.parseInt(ArraySizeTF.getText());
+                size = Integer.parseInt(ArraySizeTF.getText()); 
 
                 array = new int[size];
                 cols = new Column[size];
@@ -239,7 +244,7 @@ public class DemonstrationController {
 
                     this.cols = new Column[size];
                     for (int i = 0; i < this.size; i++){
-                        this.cols[i] = new Column(array[i]);
+                        this.cols[i] = new Column(array[i]); 
                     }
                     drawCurrentState();
 
@@ -251,14 +256,15 @@ public class DemonstrationController {
     }
 
     @FXML
-    void handleMenuBtn(ActionEvent event) {
-
+    void handleMenuBtn(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/screen/MenuScreen.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
-    @FXML
-    void getAlgorithm(ActionEvent e) {
-
-    }
 
     @FXML
     void handleSortBtn(ActionEvent event) {
@@ -273,7 +279,7 @@ public class DemonstrationController {
             for (int i = 0; i < qSort.count; i++) {
                 st.getChildren().add(qSort.trans[i]);
             }
-            st.play();
+            st.play(); 
         }
 
         else if (chosenAlgorithm == 1)
@@ -377,7 +383,7 @@ public class DemonstrationController {
     public void updateProcess(int length, int[] array, int current, int check) {
         this.size = length;
         this.array = array;
-        this.current = current;
+        this.current = current; 
         this.check = check;
 
         drawCurrentState();
@@ -386,8 +392,8 @@ public class DemonstrationController {
     public void delay() {
         try {
             Thread.sleep(speed);
-        } catch (Exception e) {
+        } catch (Exception e) {} 
         }
     }
 
-}
+

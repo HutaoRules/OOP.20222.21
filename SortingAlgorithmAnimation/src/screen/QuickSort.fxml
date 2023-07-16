@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.AmbientLight?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuickSort">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox prefHeight="628.0" prefWidth="1100.0" style="-fx-background-color: #FFF;" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <HBox alignment="CENTER" prefHeight="544.0" prefWidth="1100.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefWidth="763.0" style="-fx-background-color: #fff; -fx-border-color: #E1E1E1;">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Pane fx:id="drawPane" prefHeight="451.0" prefWidth="762.0">
+                                       <VBox.margin>
+                                          <Insets left="36.0" right="36.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <AmbientLight color="CHARTREUSE" layoutX="291.0" layoutY="150.0" lightOn="true" />
+                                       </children>
+                                    </Pane>
+                                    <VBox prefHeight="2.0" style="-fx-background-color: #2A3950;">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                           <children>
+                              <Label text="Array Size:" textFill="#2a3950">
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="arrSizeLabel" text="12" textFill="#2a3950">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="8.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label text="Speed: " textFill="#2a3950">
+                                 <HBox.margin>
+                                    <Insets left="32.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="speedLabel" text="1.5" textFill="#2a3950">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="8.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="34.0" top="23.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="32.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefWidth="236.0" spacing="10.0" style="-fx-background-color: #fff; -fx-border-color: #E1E1E1;">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <ComboBox fx:id="inputOptionComboBox" onAction="#handleInputOptionComboBox" prefWidth="150.0" promptText="Input Option" style="-fx-background-color: #fff; -fx-border-color: #2A3950;" />
+                        <HBox alignment="CENTER" prefHeight="40.0" spacing="12.0">
+                           <children>
+                              <Label fx:id="ArraySizeLabel" text="Array Size:" textFill="#2a3950" />
+                              <TextField fx:id="ArraySizeTF" alignment="CENTER" prefHeight="25.0" prefWidth="43.0" promptText="12">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="arraySizeHelpBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleArraySizeHelpBtn" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: #2A3950;" text="?" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <TextArea fx:id="inputArrayTA" prefHeight="104.0" prefWidth="234.0">
+                           <VBox.margin>
+                              <Insets left="28.0" right="28.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <Button fx:id="generateBtn" mnemonicParsing="false" onAction="#handleGenerateBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950; -fx-border-radius: 12px;" text="GENERATE" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <VBox prefHeight="1.0" style="-fx-background-color: #2a3950;">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" spacing="12.0">
+                           <children>
+                              <Label text="Speed:" textFill="#2a3950" />
+                              <Slider fx:id="speedSlider" prefHeight="14.0" prefWidth="95.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="6.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Type: " textFill="#2a3950">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="algorithmLabel" alignment="CENTER" contentDisplay="CENTER" text="QUICK SORT" textFill="#2a3950">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Button fx:id="sortBtn" mnemonicParsing="false" onAction="#handleSortBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950;" text="SORT" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#handleMenuBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #56657D;" text="BACK TO MENU" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="42.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

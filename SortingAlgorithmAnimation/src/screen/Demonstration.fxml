@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.InputArrayController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Sort">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -50,28 +53,17 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <HBox alignment="BOTTOM_CENTER" prefHeight="455.0" spacing="10.0">
-                                       <children>
-                                          <Rectangle fill="#2a3950" height="336.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="420.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="155.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="288.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="189.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                          <Rectangle fill="#2a3950" height="249.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
-                                       </children>
+                                    <Pane fx:id="drawPane" prefHeight="451.0" prefWidth="762.0">
                                        <VBox.margin>
-                                          <Insets left="100.2" right="102.2" top="8.0" />
+                                          <Insets left="36.0" right="36.0" />
                                        </VBox.margin>
-                                    </HBox>
+                                       <children>
+                                          <AmbientLight color="CHARTREUSE" layoutX="291.0" layoutY="150.0" lightOn="true" />
+                                       </children>
+                                    </Pane>
                                     <VBox prefHeight="2.0" style="-fx-background-color: #2A3950;">
                                        <VBox.margin>
-                                          <Insets left="64.0" right="64.0" />
+                                          <Insets left="16.0" right="16.0" />
                                        </VBox.margin>
                                     </VBox>
                                  </children>
@@ -85,7 +77,7 @@
                                     <Font name="Arial" size="13.0" />
                                  </font>
                               </Label>
-                              <Label text="12" textFill="#2a3950">
+                              <Label fx:id="arrSizeLabel" text="12" textFill="#2a3950">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -101,7 +93,7 @@
                                     <Font name="Arial" size="13.0" />
                                  </font>
                               </Label>
-                              <Label text="1.5" textFill="#2a3950">
+                              <Label fx:id="speedLabel" text="1.5" textFill="#2a3950">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -117,7 +109,7 @@
                                     <Font name="Arial" size="13.0" />
                                  </font>
                               </Label>
-                              <Label text="3.25" textFill="#2a3950">
+                              <Label fx:id="timeLabel" text="3.25" textFill="#2a3950">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -140,65 +132,44 @@
                         </HBox>
                      </children>
                      <padding>
-                        <Insets top="20.0" />
+                        <Insets top="32.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefWidth="236.0" style="-fx-background-color: #fff; -fx-border-color: #E1E1E1;">
+                  <VBox alignment="CENTER" prefWidth="236.0" spacing="10.0" style="-fx-background-color: #fff; -fx-border-color: #E1E1E1;">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="40.0" spacing="16.0">
+                        <ComboBox fx:id="inputOptionComboBox" onAction="#handleInputOptionComboBox" prefWidth="150.0" promptText="Input Option" style="-fx-background-color: #fff; -fx-border-color: #2A3950;" />
+                        <HBox alignment="CENTER" prefHeight="40.0" spacing="12.0">
                            <children>
-                              <Label text="Array Size:" textFill="#2a3950" />
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="43.0" promptText="12">
+                              <Label fx:id="ArraySizeLabel" text="Array Size:" textFill="#2a3950" />
+                              <TextField fx:id="ArraySizeTF" alignment="CENTER" prefHeight="25.0" prefWidth="43.0" promptText="12">
                                  <font>
                                     <Font name="Arial" size="14.0" />
                                  </font>
                               </TextField>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: #2A3950;" text="?" textAlignment="CENTER" textFill="WHITE">
+                              <Button fx:id="arraySizeHelpBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleArraySizeHelpBtn" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: #2A3950;" text="?" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                               </Button>
                            </children>
                            <VBox.margin>
-                              <Insets top="60.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950; -fx-border-radius: 12px;" text="GENERATE" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="15.0" />
-                           </font>
+                        <TextArea fx:id="inputArrayTA" prefHeight="104.0" prefWidth="234.0">
                            <VBox.margin>
-                              <Insets top="8.0" />
+                              <Insets left="28.0" right="28.0" />
                            </VBox.margin>
-                        </Button>
-                        <Label text="Input Array" textFill="#2a3950">
-                           <padding>
-                              <Insets right="80.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="7.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="inputArrayTA" prefHeight="60.0" prefWidth="162.0" promptText="[]" text="[&#10;&#10;]">
-                           <VBox.margin>
-                              <Insets left="36.0" right="36.0" top="5.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
                         </TextArea>
-                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreateBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950;" text="CREATE" textFill="WHITE">
+                        <Button fx:id="generateBtn" mnemonicParsing="false" onAction="#handleGenerateBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950; -fx-border-radius: 12px;" text="GENERATE" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="20.0" top="12.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
                         <VBox prefHeight="1.0" style="-fx-background-color: #2a3950;">
@@ -206,18 +177,13 @@
                               <Insets left="20.0" right="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" spacing="26.0">
+                        <HBox alignment="CENTER" prefHeight="40.0" spacing="12.0">
                            <children>
                               <Label text="Speed:" textFill="#2a3950" />
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="43.0" promptText="1" />
-                              <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: #2A3950;" text="?" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Button>
+                              <Slider fx:id="speedSlider" prefHeight="14.0" prefWidth="95.0" />
                            </children>
                            <VBox.margin>
-                              <Insets top="24.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" spacing="6.0">
@@ -227,30 +193,30 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="BUBBLE SORT" textFill="#2a3950">
+                              <Label fx:id="algorithmLabel" alignment="CENTER" contentDisplay="CENTER" text="BUBBLE SORT" textFill="#2a3950">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets top="12.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950;" text="SORT" textFill="WHITE">
+                        <Button fx:id="sortBtn" mnemonicParsing="false" onAction="#handleSortBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #2A3950;" text="SORT" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #56657D;" text="BACK TO MENU" textFill="WHITE">
+                        <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#handleMenuBtn" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #56657D;" text="BACK TO MENU" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="14.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
                      </children>

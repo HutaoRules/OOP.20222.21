@@ -48,7 +48,7 @@ public class DemonstrationController {
 
     private Column[] cols = new Column[size];
 
-    private String[] inputArrayOption = { "Random", "Manual" };
+    private String[] inputArrayOption = { "Random", "Manual" }; 
 
     // -------------------------------DATA
     // INIT-------------------------------------------
@@ -229,13 +229,20 @@ public class DemonstrationController {
 
                 drawCurrentState();
                 break;
-            case 1:
-                int[] newArr;
+            case 1: // manual 
+                
                 try {
-                    newArr = transformer.StrToArr(transformer.deleteNewLineTabSpaces(inputArrayTA.getText()), ",");
-                    size = newArr.length;
-                    array = newArr;
+                    array = transformer.StrToArr(transformer.deleteNewLineTabSpaces(inputArrayTA.getText()), ",");
+                    this.size = array.length;
+                    
+                    
+
+                    this.cols = new Column[size];
+                    for (int i = 0; i < this.size; i++){
+                        this.cols[i] = new Column(array[i]);
+                    }
                     drawCurrentState();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -327,6 +334,7 @@ public class DemonstrationController {
                     }
                 });
         speed = (int) Math.round(speedSlider.getValue());
+
     }
 
     // -------------------------------VISUALIZATION----------------------------------
@@ -338,8 +346,10 @@ public class DemonstrationController {
         }
         Rectangle rec;
         double recWidth = drawPane.getWidth() / size;
+        System.out.println(size);
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
+            System.out.println(size);
             double HEIGHT = array[i] * (drawPane.getHeight() / maxHeight); // set height of element in graph.
             rec = cols[i];
             rec.setHeight(HEIGHT);

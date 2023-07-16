@@ -63,25 +63,6 @@ public class MenuScreenController{
         alert.showAndWait();
     }
 
-    // @FXML
-    // private void handleCloseMenuItem(ActionEvent event) {
-    //     Stage stage = (Stage) ((javafx.scene.control.MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
-    //     confirmExit(stage);
-    // }
-
-    // // Hiển thị hộp thoại xác nhận thoát chương trình
-    // private void confirmExit(Stage stage) {
-    //     Alert alert = new Alert(AlertType.CONFIRMATION);
-    //     alert.setTitle("Confirm Exit");
-    //     alert.setHeaderText("Are you sure you want to exit?");
-    //     alert.setContentText("Any unsaved changes will be lost.");
-
-    //     Optional<ButtonType> result = alert.showAndWait();
-    //     if (result.isPresent() && result.get() == ButtonType.OK) {
-    //         Platform.exit();
-    //     }
-    // }
-
     @FXML
     public void handleExitButton(ActionEvent event) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -89,7 +70,6 @@ public class MenuScreenController{
         alert.setHeaderText("Quit Sorting Visualization");
         alert.setContentText("Are you sure you want to quit?");
 
-        // Xác nhận xem người dùng có muốn thoát hay không
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 // Thoát ứng dụng

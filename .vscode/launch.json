@@ -8,9 +8,33 @@
             "type": "java",
             "name": "MenuScreen",
             "request": "launch",
+            "vmArgs": "--module-path /Users/mac/Downloads/javafx-sdk-17.0.7/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "application.MenuScreen",
-            "projectName": "OOP.20222.21_f5d0f4a6",
-            "vmArgs": "--module-path \"C:/Program Files/Eclipse Adoptium/javafx-sdk-20.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "projectName": "OOP.20222.21_1165e4c4"
+        },
+        {
+            "type": "java",
+            "name": "Demonstration",
+            "request": "launch",
+            "vmArgs": "--module-path /Users/mac/Downloads/javafx-sdk-17.0.7/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "application.Demonstration",
+            "projectName": "OOP.20222.21_1165e4c4"
+        },
+        {
+            "type": "java",
+            "name": "Demonstration",
+            "request": "launch",
+            "mainClass": "application.Demonstration",
+            "vmArgs": "--module-path /Users/mac/Downloads/javafx-sdk-17.0.7/lib --add-modules javafx.controls,javafx.fxml",
+            "projectName": "OOP.20222.21_f5d0f4a6"
+        },
+        {
+            "type": "java",
+            "name": "MenuScreen",
+            "request": "launch",
+            "vmArgs": "--module-path /Users/mac/Downloads/javafx-sdk-17.0.7/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "application.MenuScreen",
+            "projectName": "OOP.20222.21_f5d0f4a6"
         },
         {
             "type": "java",
@@ -23,8 +47,7 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "application.Main",
-            "projectName": "OOP.20222.21_f5d0f4a6",
-            "vmArgs": "--module-path \"C:/Program Files/Eclipse Adoptium/javafx-sdk-20.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "projectName": "OOP.20222.21_f5d0f4a6"
         }
     ]
 }

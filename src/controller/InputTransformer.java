@@ -1,4 +1,4 @@
-package visualization;
+package controller;
 
 public class InputTransformer { 
 
@@ -39,5 +39,4 @@ public class InputTransformer {
 
         return result;
     }
-
 }

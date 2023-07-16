@@ -1,5 +1,7 @@
 package algorithm;
 
+import data.Column;
+
 public interface Sortable {
-    public void swap(int[] arr, int i, int j);
+    public void swap(Column[] arr, int i1, int i2);
 }

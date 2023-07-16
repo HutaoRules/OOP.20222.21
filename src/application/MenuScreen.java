@@ -16,7 +16,6 @@ public class MenuScreen extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        // Xử lý sự kiện khi ấn nút close
         primaryStage.setOnCloseRequest(event -> {
             event.consume(); // Hủy bỏ sự kiện đóng cửa sổ mặc định
 

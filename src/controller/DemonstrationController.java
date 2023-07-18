@@ -273,7 +273,7 @@ public class DemonstrationController {
 
         if (chosenAlgorithm == 2) {
             QuickSort qSort = new QuickSort(cols, drawPane);
-            qSort.quickSort(cols, 0, cols.length - 1);
+            qSort.sort();
             SequentialTransition st = new SequentialTransition();
 
             for (int i = 0; i < qSort.count; i++) {

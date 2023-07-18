@@ -28,10 +28,10 @@ public abstract class Sort implements Sortable {
         ParallelTransition paTran = new ParallelTransition();
         
 
-        TranslateTransition tran1 = new TranslateTransition(Duration.millis(speed), cols[i1]);
+        TranslateTransition tran1 = new TranslateTransition(Duration.millis(300), cols[i1]);
         tran1.setByX((i2-i1)*recWidth);
         
-        TranslateTransition tran2 = new TranslateTransition(Duration.millis(speed), cols[i2]);
+        TranslateTransition tran2 = new TranslateTransition(Duration.millis(300), cols[i2]);
         tran2.setByX((i1-i2)*recWidth);
 
         Column temp = cols[i1];

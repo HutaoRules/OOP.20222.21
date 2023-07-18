@@ -2,6 +2,7 @@ package algorithm;
 
 import data.Column;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class QuickSort extends Sort {
 
@@ -19,6 +20,7 @@ public class QuickSort extends Sort {
 
     private int partition(Column[] cols, int low, int high) {
         Column pivot = cols[high];
+        colorColumn(cols, Color.RED, high);
         int i = low - 1;
         for (int j = low; j <= high - 1; j++) {
             if (cols[j].getValue() <= pivot.getValue()) {
@@ -27,21 +29,23 @@ public class QuickSort extends Sort {
             }
         } 
         swap(cols, i + 1, high);
+        colorColumn(cols, Color.CYAN, i+1);
         return i + 1;
     }
 
     public void quickSort(Column[] cols, int low, int high) {
         if (low < high) {
             int pi = partition(cols, low, high);
-
             quickSort(cols, low, pi - 1);
-            quickSort(cols, pi + 1, high); 
+            quickSort(cols, pi + 1, high);
         }
+        
     }
 
     @Override
     public void sort() {
         quickSort(cols, 0, this.size - 1);
+        colorColumn(cols, Color.CYAN);
     }
 
 }

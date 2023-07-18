@@ -28,10 +28,10 @@ public abstract class Sort implements Sortable {
         ParallelTransition paTran = new ParallelTransition();
         
 
-        TranslateTransition tran1 = new TranslateTransition(Duration.millis(300), cols[i1]);
+        TranslateTransition tran1 = new TranslateTransition(Duration.millis(100), cols[i1]);
         tran1.setByX((i2-i1)*recWidth);
         
-        TranslateTransition tran2 = new TranslateTransition(Duration.millis(300), cols[i2]);
+        TranslateTransition tran2 = new TranslateTransition(Duration.millis(100), cols[i2]);
         tran2.setByX((i1-i2)*recWidth);
 
         Column temp = cols[i1];
@@ -44,9 +44,9 @@ public abstract class Sort implements Sortable {
         count += 1;
     }
     
-    void colorColumn(Column[] arr, Color color, int...a) {
+    void colorColumn(Column[] arr, Color color, int...indices) {
         ParallelTransition pt = new ParallelTransition();
-        if(a.length == 0) {
+        if(indices.length == 0) {
             for (int i = 0; i < arr.length; i++) {
                 FillTransition ft = new FillTransition();
                 ft.setShape(arr[i]);
@@ -59,9 +59,9 @@ public abstract class Sort implements Sortable {
             return;
         }
 
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 0; i < indices.length; i++) {
             FillTransition ft = new FillTransition();
-            ft.setShape(arr[a[i]]);
+            ft.setShape(arr[indices[i]]);
             ft.setToValue(color);
             ft.setDuration(Duration.millis(100));
             pt.getChildren().add(ft); 

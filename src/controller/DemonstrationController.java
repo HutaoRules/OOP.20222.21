@@ -6,6 +6,7 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,7 @@ import algorithm.QuickSort;
 import algorithm.Sort;
 import data.DataController;
 import data.Unit;
+import javax.swing.JOptionPane;
 
 public class DemonstrationController {
     private final SequentialTransition sequentialTransition = new SequentialTransition();
@@ -35,13 +37,9 @@ public class DemonstrationController {
     private InputTransformer transformer = new InputTransformer();
     private double width;
 	public int speed;
-	private int current;
-	private int check;
 	private int size;
 	private int[] array = new int[size];	
-	private int curInputArrayOption = 0; // 0 for manual, 1 for random
-	private int curAlg = 0; // 0 for bubble, 1 for heap, 2 for quick sort
-	
+	private int curInputArrayOption = 0; // 0 for manual, 1 for random	
 	private static final int MAX_ARRAY_LENGTH = 300;
 	
 	private String[] inputArrayOption = {"Random", "Manual"};
@@ -49,10 +47,6 @@ public class DemonstrationController {
 //------------------------------------Setter and Getter------------------------
     public int getSpeed() {
         return speed;
-    }
-
-    public int getCurAlg() {
-        return curAlg;
     }
 
     public int getSize() {
@@ -70,32 +64,9 @@ public class DemonstrationController {
     public void setArray(int[] array) {
         this.array = array;
     }
-
-	public int getCurrent() {
-		return current;
-	}
-
-	public void setCurrent(int current) {
-		this.current = current;
-	}
-
-	public int getCheck() {
-		return check;
-	}
-
-	public void setCheck(int check) {
-		this.check = check;
-	}
-    
 //---------------------------------------FXML---------------------------------------------
     @FXML
-    private Label ArraySizeLabel;
-
-    @FXML
     private TextField ArraySizeTF;
-
-    @FXML
-    private Label algorithmLabel;
 
     @FXML
     private Label arrSizeLabel;
@@ -128,24 +99,25 @@ public class DemonstrationController {
     private Slider speedSlider;
 
     @FXML
-    private Label timeLabel;
-
-    @FXML
     void handleArraySizeHelpBtn(ActionEvent event) {
-    	
+        JOptionPane.showMessageDialog(null, "Enter the size of the array you want to generate. \n" +
+                "The size must be an integer number between 1 and 300.");
     }
 
     @FXML
     void handleGenerateBtn(ActionEvent event) {
         drawPane.getChildren().clear();
-        units = null;
     	arrSizeLabel.setText(ArraySizeTF.getText());
     	curInputArrayOption = inputOptionComboBox.getSelectionModel().getSelectedIndex();
     	switch (curInputArrayOption) {
     		case 0: //random
     			size = Integer.parseInt(ArraySizeTF.getText());
-                units = dataController.randomArr(size);
-                createUnits(units);
+                if (size > MAX_ARRAY_LENGTH) {
+                    JOptionPane.showMessageDialog(null, "The size of the array must be less than 300.");
+                    return;
+                }
+                this.units = dataController.randomArr(size);
+                createUnits(this.units);
     			break;
     		case 1: //manual
     			int[] newArr;
@@ -153,8 +125,8 @@ public class DemonstrationController {
     				newArr = transformer.StrToArr(transformer.deleteNewLineTabSpaces(inputArrayTA.getText()), ",");
     				size = newArr.length;
     				array = newArr;
-                    units = dataController.createArr(newArr);
-                    createUnits(units);
+                    this.units = dataController.createArr(newArr);
+                    createUnits(this.units);
     			} catch (Exception e) {
     				e.printStackTrace();
     			}
@@ -176,7 +148,7 @@ public class DemonstrationController {
     @FXML
     void handleSortBtn(ActionEvent event) {
         String alg = ((Stage) sortBtn.getScene().getWindow()).getTitle();
-        double cwidth = drawPane.getWidth()/units.length;
+        double cwidth = drawPane.getWidth()/this.units.length;
         Sort sort = new Sort(cwidth);
         if (alg.equals("Bubble Sort")) {
             sort = new BubbleSort(cwidth);
@@ -186,7 +158,7 @@ public class DemonstrationController {
             sort = new QuickSort(cwidth);
         }
         sequentialTransition.getChildren().clear();
-        ArrayList<Transition> transitions = sort.sorting(units);
+        ArrayList<Transition> transitions = sort.sorting(this.units);
         for (Transition transition : transitions) {
             sequentialTransition.getChildren().add(transition);
         }
@@ -254,5 +226,4 @@ public class DemonstrationController {
         }
         return maxHeight;
     }
-    
 }

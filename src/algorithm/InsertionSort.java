@@ -43,16 +43,24 @@ public class InsertionSort extends Sort {
             colorUnit(arr, CHECKING, i);
             ParallelTransition pt = new ParallelTransition();
             int j = i - 1;
+            colorUnit(arr, COMPARE, j);
             while (j >= 0 && arr[j].getValue() > key.getValue()) {
-                colorUnit(arr, COMPARE, j);
                 colorUnit(arr, START, j);
                 pt.getChildren().add(arr[j].move(this.getWidth()));
                 arr[j + 1] = arr[j];
                 j = j - 1;
+                if (j > 0) {
+                    colorUnit(arr, COMPARE, j);
+                }if(j==0){
+                    colorUnit(arr, COMPARE,j);
+                    colorUnit(arr, START, j);
+                }
+
             }
+            colorUnit(arr, START, j + 1);
             arr[j + 1] = key;
             pt.getChildren().add(key.move(this.getWidth() * (j + 1 - i)));
-            transitions.add(pt);
+            this.transitions.add(pt);
             colorUnit(arr, START, j + 1);
 
         }
@@ -60,6 +68,6 @@ public class InsertionSort extends Sort {
     public ArrayList<Transition> sorting(Unit[] arr) {
         insertionSort(arr);
         colorUnit(arr, CHECKING);   
-        return transitions;
+        return this.transitions;
     }
 }

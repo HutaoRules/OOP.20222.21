@@ -11,7 +11,6 @@ public class BubbleSort extends Sort {
     }
     private void compare(Unit[] arr, int i, int j) {
         colorUnit(arr, COMPARE, i, j);
-        //
         if (arr[i].getValue() > arr[j].getValue()) {
             swap(arr, i, j);
         }
@@ -28,6 +27,6 @@ public class BubbleSort extends Sort {
     public ArrayList<Transition> sorting(Unit[] arr) {
         bubbleSort(arr);
         colorUnit(arr, CHECKING);
-        return transitions;
+        return this.transitions;
     }
 }

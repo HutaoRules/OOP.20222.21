@@ -25,7 +25,7 @@ public class MenuScreen extends Application {
         });
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Sorting Visualization");
+        primaryStage.setTitle("Menu");
         primaryStage.show();
     }
 

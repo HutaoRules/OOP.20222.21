@@ -14,7 +14,7 @@ public class Sort {
     public static Color START = Color.web("#2A3950");
     public static Color CHECKING = Color.web("#84B7FD");
     public static Color COMPARE = Color.web("#C6CEFF");
-    public static ArrayList<Transition> transitions = new ArrayList<>();
+    public ArrayList<Transition> transitions = new ArrayList<>();
     void colorUnit(Unit[] arr, Color color, int...a) {
         ParallelTransition pt = new ParallelTransition();
         if(a.length == 0) {
@@ -25,7 +25,7 @@ public class Sort {
                 ft.setDuration(Duration.millis(1));
                 pt.getChildren().add(ft);
             }
-            transitions.add(pt);
+            this.transitions.add(pt);
             return;
         }
 
@@ -36,7 +36,7 @@ public class Sort {
             ft.setDuration(Duration.minutes(0.5));
             pt.getChildren().add(ft);
         }
-        transitions.add(pt);
+        this.transitions.add(pt);
     }
     public Sort(double width) {
         this.width = width;
@@ -52,9 +52,9 @@ public class Sort {
         arr[i] = arr[j];
         arr[j] = tmp;
         pt.getChildren().addAll(arr[i].move(width*(i - j)), arr[j].move(width*(j - i)));
-        transitions.add(pt);
+        this.transitions.add(pt);
     }
     public ArrayList<Transition> sorting(Unit[] arr) {
-        return transitions;
+        return this.transitions;
     }
 }

@@ -72,6 +72,6 @@ public class QuickSort extends Sort {
     public ArrayList<Transition> sorting(Unit[] arr) {
         quickSort(arr, 0, arr.length-1);
         colorUnit(arr, CHECKING);
-        return transitions;
+        return this.transitions;
     }
 }

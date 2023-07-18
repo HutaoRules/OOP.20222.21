@@ -23,6 +23,11 @@ public class InputTransformer {
                 throw new Exception("This is not number");
             }
         }
+        for (int i = 0; i < arr.length; i++) { 
+            if (arr[i] < 0) {
+                throw new Exception("This is not positive number");
+            }
+        }
         return arr;
     }
 

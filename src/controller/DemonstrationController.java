@@ -269,7 +269,7 @@ public class DemonstrationController {
     @FXML
     void handleSortBtn(ActionEvent event) {
 
-        int chosenAlgorithm = inputOptionComboBox.getSelectionModel().getSelectedIndex();
+        int chosenAlgorithm = algorithmComboBox.getSelectionModel().getSelectedIndex();
 
         if (chosenAlgorithm == 2) {
             QuickSort qSort = new QuickSort(cols, drawPane);
@@ -354,7 +354,7 @@ public class DemonstrationController {
         double recWidth = drawPane.getWidth() / size;
 
         for (int i = 0; i < this.size; i++) {
-            System.out.println(size);
+
             double HEIGHT = array[i] * (drawPane.getHeight() / maxHeight); // set height of element in graph.
             rec = cols[i];
             rec.setHeight(HEIGHT);

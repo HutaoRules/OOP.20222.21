@@ -41,7 +41,6 @@ public class DemonstrationController {
 	private int[] array = new int[size];	
 	private int curInputArrayOption = 0; // 0 for manual, 1 for random	
 	private static final int MAX_ARRAY_LENGTH = 300;
-	
 	private String[] inputArrayOption = {"Random", "Manual"};
 	
 //------------------------------------Setter and Getter------------------------

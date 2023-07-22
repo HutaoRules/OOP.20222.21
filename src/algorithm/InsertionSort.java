@@ -44,19 +44,22 @@ public class InsertionSort extends Sort {
             ParallelTransition pt = new ParallelTransition();
             int j = i - 1;
             colorUnit(arr, COMPARE, j);
+            colorUnit(arr, START, j);
             while (j >= 0 && arr[j].getValue() > key.getValue()) {
-                colorUnit(arr, START, j);
                 pt.getChildren().add(arr[j].move(this.getWidth()));
                 arr[j + 1] = arr[j];
                 j = j - 1;
                 if (j > 0) {
                     colorUnit(arr, COMPARE, j);
+                    colorUnit(arr, START, j);
                 }if(j==0){
                     colorUnit(arr, COMPARE,j);
                     colorUnit(arr, START, j);
                 }
-
             }
+            // if(j>=0){
+            //     colorUnit(arr, COMPARE,j);
+            //     colorUnit(arr, START, j);
             colorUnit(arr, START, j + 1);
             arr[j + 1] = key;
             pt.getChildren().add(key.move(this.getWidth() * (j + 1 - i)));

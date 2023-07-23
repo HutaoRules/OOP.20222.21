@@ -69,6 +69,7 @@ public class QuickSort extends Sort {
             quickSort(arr, pi+1, high);
         }
     }
+    @Override
     public ArrayList<Transition> sorting(Unit[] arr) {
         quickSort(arr, 0, arr.length-1);
         colorUnit(arr, CHECKING);

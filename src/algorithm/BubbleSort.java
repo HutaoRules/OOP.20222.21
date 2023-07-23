@@ -24,6 +24,7 @@ public class BubbleSort extends Sort {
             colorUnit(arr, CHECKING, arr.length - i - 1);
         }
     }
+    @Override
     public ArrayList<Transition> sorting(Unit[] arr) {
         bubbleSort(arr);
         colorUnit(arr, CHECKING);

@@ -57,9 +57,6 @@ public class InsertionSort extends Sort {
                     colorUnit(arr, START, j);
                 }
             }
-            // if(j>=0){
-            //     colorUnit(arr, COMPARE,j);
-            //     colorUnit(arr, START, j);
             colorUnit(arr, START, j + 1);
             arr[j + 1] = key;
             pt.getChildren().add(key.move(this.getWidth() * (j + 1 - i)));
@@ -68,6 +65,7 @@ public class InsertionSort extends Sort {
 
         }
     }
+    @Override
     public ArrayList<Transition> sorting(Unit[] arr) {
         insertionSort(arr);
         colorUnit(arr, CHECKING);   

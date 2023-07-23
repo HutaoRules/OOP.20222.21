@@ -154,7 +154,7 @@ public class DemonstrationController {
             sort = new InsertionSort(cwidth);
         } else if (alg.equals("Quick Sort")) {
             sort = new QuickSort(cwidth);
-        }
+        }   
         sequentialTransition.getChildren().clear();
         ArrayList<Transition> transitions = sort.sorting(this.units);
         for (Transition transition : transitions) {
